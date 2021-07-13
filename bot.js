@@ -18,6 +18,10 @@ for(const file of commandFiles)
 {
     const command = require("./commands/"+file);
     client.commands.set(command.name, command);
+    client.api.applications("602939142678118457").commands.post({data: {
+            name: command.name,
+            description: command.description
+        }})
 }
 
 client.on("message", message => {
